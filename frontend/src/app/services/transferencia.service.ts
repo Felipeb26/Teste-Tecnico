@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Contato } from "../interfaces/contato";
 import { Transferencia } from "../interfaces/transferencia";
 
 
@@ -9,11 +8,15 @@ import { Transferencia } from "../interfaces/transferencia";
   providedIn: 'root'
 })
 export class TransferenciaService {
-  private readonly apiUrl = "http://localhost:8080/v1/contato"
+  private readonly apiUrl = "http://localhost:8080/v1/transferencia"
 
   constructor (private http: HttpClient) { }
 
   saveTransferencia(transferencia: Transferencia): Observable<Transferencia> {
     return this.http.post<Transferencia>(this.apiUrl, transferencia)
+  }
+
+  findAll():Observable<Transferencia[]>{
+    return this.http.get<Transferencia[]>(this.apiUrl)
   }
 }

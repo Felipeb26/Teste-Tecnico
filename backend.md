@@ -24,7 +24,7 @@
 ## Arquitetura do Sistema
 
 Foi escolhido o modelo em camadas pela sua abstração e facilidade em ser aplicada, onde temos a cama de config "configuração", service, implements"impl", controller, repository
-e domain, onde na domain seria desenvolvido as entidades do banco, dto´s, e enums utilizado em si
+e domain, onde na domain seria desenvolvido as entidades do banco, dto´s, e enums utilizado em si, a pasta schedule foi criada com o intuito de gerar uma tarefa agendada que rodasse as 9 e ás 17 da manhã para verificar transferencias pendentes e realizalas de imediato
 
 
 ## Rodar o projeto

@@ -34,7 +34,7 @@ public class TransferenciaEntity extends AbstractEntity<TransferenciaEntity> {
   private BigDecimal valor;
   private LocalDate dataTransferencia;
   @JoinColumn(name = "CONTADESTINO")
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @ToString.Exclude
   private ContatoEntity contaDestino;
 }
