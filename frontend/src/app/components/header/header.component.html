@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="opened = !opened">
+    <span class="material-icons">menu</span>
+  </button>
+  <h1>teste tecnico</h1>
+  <div class="userData">
+    <span>{{user}}</span>
+    <span>{{conta}}</span>
+  </div>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #drawer [opened]="opened" mode="side">
+    <mat-nav-list>
+      <button mat-button routerLink="/" routerLinkActive="active">
+        <span class="material-icons">
+          home
+        </span>
+        home
+      </button>
+      <button mat-button routerLink="/extrato" routerLinkActive="active">
+        <span class="material-icons">
+          receipt_long
+        </span>
+        extrato
+      </button>
+      <button mat-button routerLink="/transacao" routerLinkActive="active">
+        <span class="material-icons">paid</span>
+        transferir
+      </button>
+      <button mat-button routerLink="/contatos" routerLinkActive="active">
+        <span class="material-icons">groups</span>
+        contatos
+      </button>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

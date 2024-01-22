@@ -1,0 +1,38 @@
+<mat-card>
+  <form #contato="ngForm" [formGroup]="applyForm" (ngSubmit)="save(contato.form)">
+    <mat-form-field>
+      <mat-label>nome</mat-label>
+      <input required matInput type="text" placeholder="nome" formControlName="nome">
+      <mat-error *ngIf="applyForm.controls.nome.errors?.['required']">
+        Um Contato para transferir é necessario
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>banco</mat-label>
+      <input required matInput type="text" placeholder="banco" formControlName="banco">
+      <mat-error *ngIf="applyForm.controls.banco.errors?.['required']">
+        É necessario informar uma conta para receber a transferencia
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>conta</mat-label>
+      <input required matInput type="number" placeholder="conta" formControlName="conta" min="5" max="10">
+      <mat-error *ngIf="applyForm.controls.conta.errors?.['required']">
+        Um Contato para transferir é necessario
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>agencia</mat-label>
+      <input required matInput type="number" placeholder="agencia" formControlName="agencia" min="1" max="2">
+      <mat-error *ngIf="applyForm.controls.agencia.errors?.['required']">
+        É necessario informar uma conta para receber a transferencia
+      </mat-error>
+      <mat-error *ngIf="applyForm.controls.agencia.hasError('maxlength')">
+        É necessario informar uma conta para receber a transferencia
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">
+      ok
+    </button>
+  </form>
+</mat-card>

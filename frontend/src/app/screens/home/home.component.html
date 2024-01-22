@@ -1,0 +1,44 @@
+<main>
+  <div class="introducao">
+    <mat-card-title>
+      Faça transferencias bancarias de uma forma nunca antes vista com este sistema novo e exclusivo
+    </mat-card-title>
+    <mat-card-subtitle>
+      Tudo o que precisa para maior controle das suas finanças
+    </mat-card-subtitle>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <h1>FAZER LOGIN</h1>
+    </mat-card-header>
+
+    <form #login="ngForm" [formGroup]="applyForm" (ngSubmit)="salvarLogin(login.form)">
+      <mat-card-content>
+        <mat-form-field>
+          <input type="text" matInput placeholder="nome" autocomplete="username" required formControlName="username">
+          <mat-error *ngIf="applyForm.controls.username.errors?.['required']">
+            necessario informar um username (email ou senha)
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input type="{{visible?'text':'password'}}" matInput placeholder="nome" autocomplete="current-password"
+            required formControlName="senha">
+          <span class="material-icons" matSuffix (click)="visible=!visible">
+            {{visible? "visibility_off": "visibility"}}
+          </span>
+          <mat-error *ngIf="applyForm.controls.senha.errors?.['required']">
+            Um Contato para transferir é necessario
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">
+          login
+        </button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+</main>

@@ -1,0 +1,77 @@
+<mat-card>
+  <form #transferencia="ngForm" [formGroup]="applyForm" (ngSubmit)="showAll(transferencia.form)">
+    <mat-form-field>
+      <mat-label>contato</mat-label>
+      <mat-select required formControlName="contato">
+        <mat-option *ngFor="let contato of contatos" [value]="contato.nome">
+          {{contato.nome}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="applyForm.controls.contato.errors?.['required']">
+        Um Contato para transferir é necessario
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>conta - agencia</mat-label>
+      <mat-select required formControlName="conta">
+        <mat-option *ngFor="let contato of contatos" [value]="contato.conta+'-'+contato.agencia">
+          {{contato.conta}}-{{contato.agencia}}
+        </mat-option>
+      </mat-select>
+      <!-- <input required matInput type="text" placeholder="conta" formControlName="conta"> -->
+      <mat-error *ngIf="applyForm.controls.conta.errors?.['required']">
+        É necessario informar uma conta para receber a transferencia
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>valor</mat-label>
+      <input required matInput type="text" placeholder="valor" formControlName="valor" currencyMask
+        [options]="{prefix: 'R$&nbsp;&nbsp;', thousands: '', precision: 2, allowNegative: false,decimal:','}">
+      <mat-error *ngIf="applyForm.controls.valor.errors?.['required']">
+        Necessario informar um valor para transferir
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data da Transferencia</mat-label>
+      <input required matInput [matDatepicker]="picker" formControlName="dataTransferencia" [min]="minDate">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="applyForm.controls.dataTransferencia.errors?.['required']">
+        Data para transferir é necessaria
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" color="primary">
+      ok
+    </button>
+  </form>
+</mat-card>
+
+
+<div *ngIf="resume">
+  <mat-card>
+    <mat-card-content>
+      O valor de {{valorFinal | currency: "BRL"}} com taxa de {{taxaTransferencia}}%
+      <br />
+      da conta {{applyForm.value.conta}}
+      <br />
+      será enviado para (o/a) {{applyForm.value.contato}} conta {{applyForm.value.conta}}
+      <br />
+      no inicio do dia {{applyForm.value.dataTransferencia |date: "dd/MM/yyyy"}}
+      <br />
+      com previssão máxima para ás 17hrs
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="cancel" type="reset" (click)="cancelarTransacao()">
+        cancelar
+      </button>
+      <button mat-raised-button class="confirm" type="button" (click)="confirmarTransacao()">
+        confirmar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

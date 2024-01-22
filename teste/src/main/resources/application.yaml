@@ -1,0 +1,49 @@
+logging:
+  level:
+    'org.hibernate.SQL': info
+    'org.hibernate.stat': debug
+    'com.h2database:h2': info
+
+server:
+  compression:
+    enabled: true
+    mime-types: application/json, application/xml,text/html,image/jpeg
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:./data/teste
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: false
+    properties:
+      jakarta.persistence.sharedCache.mode: ENABLE_SELECTIVE
+      hibernate:
+        format_sql: false
+        generate_statistics: false
+        order_inserts: true
+        order_updates: true
+        session:
+          events:
+            log.LOG_QUERIES_SLOWER_THAN_MS: 150
+  sql:
+    init:
+      mode: ALWAYS
+  h2:
+    console:
+      enabled: true
+
+
+
+documentation:
+  title: ${spring.application.name:teste_tecnico}
+  version: 1.0.0
+  url: https://www.linkedin.com/in/felipebatista-silva/
+  description: "projeto para teste tecnico spring com angular"
+  name: "Felipe Batista da Silva"
+  email: "felipeb2silva@gmail.com"

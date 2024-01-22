@@ -1,0 +1,61 @@
+app-table {
+  display: flex;
+  min-width: 15rem;
+  overflow: hidden;
+}
+
+mat-card {
+  margin: 2rem 3rem;
+  min-width: 350px;
+  min-height: 100px;
+  padding: 1rem;
+
+  & mat-form-field {
+    margin: 0.5rem;
+  }
+
+  & button {
+    box-shadow: 0 0 0.3rem black;
+    text-transform: uppercase;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  & mat-form-field {
+    min-width: 150px;
+    flex: 1;
+  }
+}
+
+mat-card-content {
+  width: 80%;
+  border: 2px solid gray;
+  display: flex;
+  background: rgba(128, 128, 128, 0.467);
+  border-radius: 0.3rem;
+  padding: 1.5rem 2rem 2rem 2rem;
+
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+
+  & button {
+    color: whitesmoke;
+  }
+}
+
+.cancel {
+  background: rgb(220, 5, 5);
+}
+
+.confirm {
+  background: rgb(15, 123, 15);
+}

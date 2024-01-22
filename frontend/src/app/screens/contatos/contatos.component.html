@@ -1,0 +1,31 @@
+<button mat-icon-button class="add-contact" (click)="openDialog()">
+  <span class="material-icons">add</span>
+</button>
+<main>
+  <mat-accordion *ngFor="let contato of contatos | async">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Nome: {{contato.nome}}
+      </mat-expansion-panel-header>
+      <mat-card-content>
+        <div class="align">
+          <span>Banco: </span>
+          <p>{{contato.banco}}</p>
+        </div>
+        <div class="align">
+          <span>Conta: </span>
+          <p>{{contato.conta}}</p>
+        </div>
+        <div class="align">
+          <span>Agencia: </span>
+          <p>{{contato.agencia}}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="deletar" (click)="deletarContato(contato.id)">
+          deletar
+        </button>
+      </mat-card-actions>
+    </mat-expansion-panel>
+  </mat-accordion>
+</main>
