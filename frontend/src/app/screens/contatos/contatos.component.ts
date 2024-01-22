@@ -12,6 +12,7 @@ import { Contato } from '../../interfaces/contato';
 import { AlertsService } from '../../services/alerts.service';
 import { ContatoService } from '../../services/contato.service';
 import { ChecksService } from '../../utils/checks.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contatos',
@@ -31,29 +32,29 @@ export class ContatosComponent implements OnInit {
   ngOnInit(): void {
     const logged = this.checks.isLogged()
     if (!logged) {
-      const alert = this.alerts.alert("usuario não encontrado", "error", "redirecionando para login")
-      alert.then(() => setTimeout(() => this.route.navigate([""]), 500))
+      const alert = this.alerts.alert("usuario não encontrado", "redirecionando para login", "error")
+      setTimeout(() => this.route.navigate([""]), 500)
     }
-    this.contatos = this.findAll()
+    this.findAll()
   }
 
   findAll() {
-    return this.request.findAll()
+    this.contatos = this.request.findAll()
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ContatoCreateComponent, {
-    });
-
-    dialogRef.beforeClosed().subscribe(() => this.findAll())
+    const dialogRef = this.dialog.open(ContatoCreateComponent, {});
     dialogRef.afterClosed().subscribe(result => this.findAll());
   }
 
   deletarContato(id?: number) {
     if (id == undefined) return;
     this.request.delete(id).subscribe(
-      (data) => this.findAll(),
-      (err) => console.log(err)
+      (data) => {
+        this.findAll()
+        this.alerts.alert("Sucesso", "Usuario deletado com sucesso")
+      },
+      (error: HttpErrorResponse) => this.alerts.alert("ERRO", error.message, "error")
     )
   }
 

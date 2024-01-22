@@ -4,12 +4,13 @@
 * anular-material
 * material-icons
 * rxjs
-* sweetalert2
+* ngx-toastr
 * pnpm
 
 ## Acessar o projeto
 
-    pnpm start
+    pnpm start e depois clicar no link abaixo
+<http://localhost:4200/>
 
 ao entrar na tela de login será necessario digitar um nome de usuario qualquer como "admin" e uma senha de sua escolha, após será possivel verificar todas as outras telas e suas funcionalidades
 

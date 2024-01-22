@@ -38,9 +38,6 @@ dependencies:
   '@angular/router':
     specifier: ^17.1.0
     version: 17.1.0(@angular/common@17.1.0)(@angular/core@17.1.0)(@angular/platform-browser@17.1.0)(rxjs@7.8.1)
-  '@sweetalert2/ngx-sweetalert2':
-    specifier: ^12.2.0
-    version: 12.2.0(@angular/common@17.1.0)(@angular/core@17.1.0)(sweetalert2@11.10.3)
   angular-input-masks:
     specifier: ^4.4.1
     version: 4.4.1
@@ -50,12 +47,12 @@ dependencies:
   ngx-mask:
     specifier: ^17.0.4
     version: 17.0.4(@angular/common@17.1.0)(@angular/core@17.1.0)(@angular/forms@17.1.0)
+  ngx-toastr:
+    specifier: ^18.0.0
+    version: 18.0.0(@angular/common@17.1.0)(@angular/core@17.1.0)(@angular/platform-browser@17.1.0)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
-  sweetalert2:
-    specifier: ^11.10.3
-    version: 11.10.3
   tslib:
     specifier: ^2.3.0
     version: 2.6.2
@@ -2990,19 +2987,6 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: true
 
-  /@sweetalert2/ngx-sweetalert2@12.2.0(@angular/common@17.1.0)(@angular/core@17.1.0)(sweetalert2@11.10.3):
-    resolution: {integrity: sha512-3zvzPJ4p8n7hXUYQ/8LSL5DfUPh60TZSabOjTgrgFKRnwCTS8z6WREoLiklQg9575VUT+Th3mmLzDBXJjJVpbw==}
-    peerDependencies:
-      '@angular/common': ^14.0.0 || ^15.0.0 || ^16.0.0
-      '@angular/core': ^14.0.0 || ^15.0.0 || ^16.0.0
-      sweetalert2: ^11.0.0
-    dependencies:
-      '@angular/common': 17.1.0(@angular/core@17.1.0)(rxjs@7.8.1)
-      '@angular/core': 17.1.0(rxjs@7.8.1)(zone.js@0.14.3)
-      sweetalert2: 11.10.3
-      tslib: 2.6.2
-    dev: false
-
   /@tufjs/canonical-json@2.0.0:
     resolution: {integrity: sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA==}
     engines: {node: ^16.14.0 || >=18.0.0}
@@ -5849,6 +5833,19 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /ngx-toastr@18.0.0(@angular/common@17.1.0)(@angular/core@17.1.0)(@angular/platform-browser@17.1.0):
+    resolution: {integrity: sha512-jZ3rOG6kygl8ittY8OltIMSo47P1VStuS01igm3MZXK6InJwHVvxU7wDHI/HGMlXSyNvWncyOuFHnnMEAifsew==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0-0'
+      '@angular/core': '>=16.0.0-0'
+      '@angular/platform-browser': '>=16.0.0-0'
+    dependencies:
+      '@angular/common': 17.1.0(@angular/core@17.1.0)(rxjs@7.8.1)
+      '@angular/core': 17.1.0(rxjs@7.8.1)(zone.js@0.14.3)
+      '@angular/platform-browser': 17.1.0(@angular/animations@17.1.0)(@angular/common@17.1.0)(@angular/core@17.1.0)
+      tslib: 2.6.2
+    dev: false
+
   /nice-napi@1.0.2:
     resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
     os: ['!win32']
@@ -7149,10 +7146,6 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
-
-  /sweetalert2@11.10.3:
-    resolution: {integrity: sha512-mZYtQR7v+khyEruq0SsVUa6XIdI9Aue8s2XAIpAwdlLN1T0w7mxKEjyubiBZ3/bLbHC/wGS4wNABvXWubCizvA==}
-    dev: false
 
   /symbol-observable@4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}

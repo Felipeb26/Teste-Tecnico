@@ -19,7 +19,6 @@
           {{contato.conta}}-{{contato.agencia}}
         </mat-option>
       </mat-select>
-      <!-- <input required matInput type="text" placeholder="conta" formControlName="conta"> -->
       <mat-error *ngIf="applyForm.controls.conta.errors?.['required']">
         É necessario informar uma conta para receber a transferencia
       </mat-error>

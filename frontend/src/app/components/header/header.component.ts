@@ -31,8 +31,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     const logged = this.check.isLogged()
     if (!logged) {
-      const alert = this.alert.alert("usuario não encontrado", "error", "redirecionando para login")
-      alert.then(() => setTimeout(() => this.route.navigate([""]), 500))
+      setTimeout(() => this.route.navigate([""]), 500)
     }
     setInterval(() => {
       this.showUserData()

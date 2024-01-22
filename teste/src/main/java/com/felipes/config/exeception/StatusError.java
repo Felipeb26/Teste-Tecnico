@@ -1,4 +1,4 @@
-package com.felipes.teste.config.exeception;
+package com.felipes.config.exeception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum StatusError {
+  UNKNOW_ERROR("UNKNOW_ERROR"),
+  DATA_INTEGRITY("DATA_VIOLATION");
 
-    UNKNOW_ERROR("UNKNOW_ERROR"), DATA_INTEGRITY("DATA_VIOLATION");
-    private final String error;
+  private final String error;
 }

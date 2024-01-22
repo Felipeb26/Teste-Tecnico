@@ -11,9 +11,19 @@ import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 
+import { provideToastr } from 'ngx-toastr';
 
 registerLocaleData(localePtBr);
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideAnimations(), importProvidersFrom(HttpClientModule),
-  { provide: LOCALE_ID, useValue: "pt-BR" }]
+  provideToastr({
+    newestOnTop: true,
+    closeButton: true,
+    progressBar: true,
+    progressAnimation: 'decreasing',
+    timeOut: 5000,
+    positionClass: 'toast-top-right',
+    preventDuplicates: true,
+  }), { provide: LOCALE_ID, useValue: "pt-BR" }]
 };
+

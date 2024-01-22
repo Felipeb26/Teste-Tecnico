@@ -9,7 +9,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxCurrencyDirective } from 'ngx-currency';
 
 @Component({
@@ -19,7 +18,7 @@ import { NgxCurrencyDirective } from 'ngx-currency';
   styleUrl: './home.component.scss',
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule,
     MatDatepickerModule, MatNativeDateModule, MatButtonModule, FormsModule, DatePipe, CurrencyPipe,
-    FormsModule, ReactiveFormsModule, NgxCurrencyDirective, SweetAlert2Module]
+    FormsModule, ReactiveFormsModule, NgxCurrencyDirective]
 })
 export class HomeComponent implements OnInit {
 

@@ -9,7 +9,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
-import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { NgxCurrencyDirective } from 'ngx-currency';
 import { Transferencia } from '../../interfaces/transferencia';
 import { AlertsService } from '../../services/alerts.service';
@@ -26,7 +25,7 @@ import { TransferenciaService } from '../../services/transferencia.service';
   styleUrl: './transacao.component.scss',
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule,
     MatDatepickerModule, MatNativeDateModule, MatButtonModule, FormsModule, DatePipe, CurrencyPipe,
-    FormsModule, ReactiveFormsModule, NgxCurrencyDirective, SweetAlert2Module],
+    FormsModule, ReactiveFormsModule, NgxCurrencyDirective],
 })
 export class TransacaoComponent {
   contaDestino: string | null
@@ -61,8 +60,8 @@ export class TransacaoComponent {
   ngOnInit(): void {
     const logged = this.checks.isLogged()
     if (!logged) {
-      const alert = this.alerts.alert("usuario não encontrado", "error", "redirecionando para login")
-      alert.then(() => setTimeout(() => this.route.navigate([""]), 500))
+      const alert = this.alerts.alert("usuario não encontrado", "redirecionando para login", "error")
+      setTimeout(() => this.route.navigate([""]), 500)
     }
     this.findAll()
   }
@@ -82,7 +81,7 @@ export class TransacaoComponent {
 
     const taxa = this.checks.checkTaxa(diffDays)
     if (taxa === undefined) {
-      this.alerts.alert("Data invalida para transferencia", "error")
+      this.alerts.alert("Data invalida para transferencia", undefined, "error")
       return
     }
 
@@ -110,18 +109,19 @@ export class TransacaoComponent {
     if (entity?.id === null || entity?.id === undefined) return;
 
     const envio: Transferencia = {
-      contaDestino: entity?.id, contaEnvio: this.contaDestino!,
+      contaDestino: entity, contaEnvio: this.contaDestino!,
       contatoNome: contato!, pessoaEnvio: sessionStorage.getItem("login")!,
       valor: valor!,
-      dataTransferencia: `${dataTransferencia?.getFullYear()}-${dataTransferencia?.getMonth()}-${dataTransferencia?.getDate()}`
+      dataTransferencia: this.checks.formatDateMonth(dataTransferencia!)
     }
 
     this.transacaoRequest.saveTransferencia(envio).subscribe(
       (data) => {
-        this.alerts.alert("transferencia agendada", 'success')
+        this.alerts.alert("transferencia agendada")
       },
-      (err) => this.alerts.alert("erro ao transferir", "error")
+      (err) => this.alerts.alert("erro ao transferir", err.message, "error")
     )
   }
+
 
 }

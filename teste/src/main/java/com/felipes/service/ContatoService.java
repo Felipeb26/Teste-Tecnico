@@ -1,17 +1,16 @@
-package com.felipes.teste.service;
+package com.felipes.service;
 
-import com.felipes.teste.domain.dto.ContatoDTO;
-
+import com.felipes.domain.dto.ContatoDTO;
 import java.util.List;
 
 public interface ContatoService {
-    List<ContatoDTO> findAll();
+  List<ContatoDTO> findAll();
 
-    ContatoDTO save(ContatoDTO contatoDTO);
+  ContatoDTO save(ContatoDTO contatoDTO);
 
-    void delete(Long id);
+  void delete(Long id);
 
-    ContatoDTO update(Long id, ContatoDTO contatoDTO);
+  ContatoDTO update(Long id, ContatoDTO contatoDTO);
 
-    ContatoDTO findById(Long id);
+  ContatoDTO findById(Long id);
 }

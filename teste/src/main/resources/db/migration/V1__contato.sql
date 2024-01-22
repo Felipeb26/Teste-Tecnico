@@ -4,6 +4,6 @@ CREATE TABLE IF NOT EXISTS CONTATO_TB (
     conta BIGINT UNIQUE,
     agencia BIGINT,
     banco VARCHAR(255),
-    valor DECIMAL,
+    valor DECIMAL(100, 2),
     dataCadastro TIMESTAMP
 );

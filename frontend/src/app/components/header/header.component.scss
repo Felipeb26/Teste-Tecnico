@@ -7,7 +7,12 @@ mat-toolbar {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
   }
+}
+
+mat-drawer-container{
+  height: 92vh;
 }
 
 mat-drawer {
@@ -16,7 +21,7 @@ mat-drawer {
 
 mat-drawer-content {
   min-height: 300px;
-  height: 690px;
+  height: 90vh
 }
 
 mat-nav-list {

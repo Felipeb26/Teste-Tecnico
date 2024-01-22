@@ -1,21 +1,42 @@
-<mat-card>
-  <mat-card-header>
-    <h1>Ultimas Transações</h1>
+<main>
+  <mat-card>
+    <mat-card-header>
+      <h1>Ultimas Transações</h1>
+    </mat-card-header>
 
-  </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let transferencia of transferencias">
+        <div class="content">
+          <div class="dadosContato">
+            <h2>transferencia enviada</h2>
 
-  <mat-card-content>
-    <div *ngFor="let transferencia of transferencias">
-      <div class="content">
-        <div class="dadosContato">
-          <h2>transferencia enviada</h2>
-          <span>Nome {{transferencia.contatoNome}}</span>
-          <span>valor {{transferencia.valor| currency: "BRL"}}</span>
-        </div>
-        <div class="dadosAdicionais">
-          <span>Date {{transferencia.dataTransferencia| date: "dd/MM/YYYY"}}</span>
+            <div class="align">
+              <p>Nome:</p>
+              <span>{{transferencia.contatoNome}}</span>
+            </div>
+            <div class="align">
+              <p>valor:</p>
+              <span>{{transferencia.valor| currency: "BRL"}}</span>
+            </div>
+          </div>
+          <div class="dadosAdicionais">
+            <div class="align">
+              <h2>Data</h2>
+              <span>{{transferencia.dataTransferencia| date: "dd/MM/YYYY"}}</span>
+            </div>
+            <div class="align">
+              <p>banco</p>
+              <span class="banco">{{transferencia.contaDestino.banco}}</span>
+            </div>
+            <div class="align">
+              <p>data agendamento</p>
+              <span class="banco">{{transferencia.dataAgendamento | localDateTime: "dd/MM/yyyy hh:mm:ss" }}</span>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+
+</main>

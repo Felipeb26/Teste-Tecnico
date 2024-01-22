@@ -12,13 +12,17 @@ main {
   justify-content: center;
 }
 
+mat-expansion-panel-header{
+  box-shadow: 0 0 1rem rgba(128, 128, 128, 0.418);
+}
+
 mat-card-content {
   display: flex;
   flex-direction: column;
   height: 70%;
   min-height: 100px;
   width: 100%;
-  padding: 0;
+  padding: 1rem 0 0 0;
 }
 
 mat-card-actions {

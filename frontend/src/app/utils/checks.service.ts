@@ -46,4 +46,13 @@ export class ChecksService {
     const is = sessionStorage.getItem("login")
     return is !== null
   }
+
+  formatDateMonth(value: Date): string {
+    const fullYear: string | number = value.getFullYear()
+    let month: string | number = value.getMonth() + 1
+    const day: string | number = value.getDate()
+
+    month = month <= 9 ? `0${month}` : month
+    return `${fullYear}-${month}-${day}`
+  }
 }

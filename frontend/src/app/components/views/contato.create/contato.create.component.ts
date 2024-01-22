@@ -1,3 +1,4 @@
+import { AlertsService } from './../../../services/alerts.service';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxCurrencyDirective } from 'ngx-currency';
 import { ContatoService } from '../../../services/contato.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contato.create',
@@ -37,7 +39,8 @@ export class ContatoCreateComponent {
 
   constructor (
     public dialogRef: MatDialogRef<ContatoCreateComponent>,
-    private request: ContatoService
+    private request: ContatoService,
+    private alerts: AlertsService
   ) { }
 
   onNoClick(): void {
@@ -53,8 +56,8 @@ export class ContatoCreateComponent {
 
   save(contato: FormGroup) {
     this.request.save(contato.value).subscribe(
-      (data) => console.log(data.nome),
-      (error) => console.log(error)
+      (data) => this.alerts.alert(`Contato ${data.nome} criado com sucesso`),
+      (error: HttpErrorResponse) => this.alerts.alert("ERRO", error.message, "error")
     )
   }
 }
