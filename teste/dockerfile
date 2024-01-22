@@ -1,0 +1,9 @@
+FROM adoptopenjdk/openjdk14:x86_64-alpine-jre-14.0.2_12
+
+WORKDIR /app
+
+COPY src /app/src
+COPY target/*.jar /app/app.jar
+
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]

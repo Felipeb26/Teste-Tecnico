@@ -1,0 +1,13 @@
+FROM node:14.4-alpine3.11 as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm i -g pnpm
+RUN pnpm install
+
+FROM node:14.4-alpine3.11
+COPY --from=build /app /gate
+
+
+COPY .  .
+EXPOSE 4200
+CMD ["pnpm","start"]
